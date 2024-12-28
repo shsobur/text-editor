@@ -8,32 +8,43 @@
   justify-content: space-between;
 }
 
-/* Main banner section container */
+/* Main banner section container__ */
 
 .home_banner_left_container {
-  height: 100%;
-  width: 60%;
-  border: 2px solid purple;
+  height: auto;
+  width: 50%;
+  padding: 0 20px;
 }
 
 .home_banner_right_container {
   height: 100%;
   width: 40%;
-  border: 2px solid tomato;
-}
-
-/* Banner left side content */
-
-
-
-
-
-
-/* Banner right side content */
-
-.home_banner_right_container {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("https://i.ibb.co.com/q5ph3VK/Banner.png");
+}
+
+/* Banner left side content__ */
+
+.home_banner_left_container h2 {
+  color: #151515;
+  font-size: 4.5rem;
+  font-family: "Playfair Display", serif;
+}
+
+.home_banner_left_container p {
+  padding: 50px 0;
+  font-size: 20px;
+}
+
+.home_banner_left_container button {
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 8px;
+  padding: 10px 50px;
+}
+
+.home_banner_left_container button:hover {
+  background-color: #e5e5e5;
 }
