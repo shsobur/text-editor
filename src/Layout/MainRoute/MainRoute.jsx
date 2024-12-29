@@ -1,13 +1,21 @@
 import { Outlet } from "react-router-dom";
 
 const MainRoute = () => {
-  return(
+  return (
     <>
       <div>
         <Outlet></Outlet>
+
+        <div>
+          
+        </div>
+
+        <div>
+          
+        </div>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default MainRoute;

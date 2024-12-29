@@ -6,6 +6,8 @@
   /* border: 2px solid red; */
 }
 
+/* Active tools__ */
+
 .deitor_navbar_main_container {
   max-width: 1280px;
   margin: auto;
@@ -18,20 +20,30 @@
   border-bottom-right-radius: 8px;
 }
 
-.deitor_navbar_main_container button {
+/* .deitor_navbar_main_container button:hover {
+  background-color: #fcfcfc;
+}
+.deitor_navbar_main_container button:active {
+  background-color: #f1f1f1;
+} */
+
+.active_tool {
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 8px;
+  background-color: #1d1d1d;
+}
+
+.disable_tool {
   background-color: #ffffff;
   font-size: 16px;
   padding: 10px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-}
-
-.deitor_navbar_main_container button:hover {
-  background-color: #fcfcfc;
-}
-.deitor_navbar_main_container button:active {
-  background-color: #f1f1f1;
 }
 
 /* Undo and resu tool__ */
@@ -80,22 +92,26 @@
 
 .deitor_text_page_container {
   max-width: 1024px;
-  height: 80%;
   margin: auto;
   margin-top: 50px;
 }
 
-.deitor_text_page_container textarea {
-  height: 100%;
-  width: 100%;
-  resize: none;
-  outline: none;
-  border: none;
-  border-radius: 8px;
+.editor_content {
+  min-height: 500px;
   padding: 50px;
-  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.editor_content .ProseMirror  {
+  flex: 1;
+  min-height: 100%;
+  outline: none;
+}
+
 
 .deitor_text_page_container button {
   color: #ffffff;
