@@ -28,6 +28,8 @@ const TextEditor = () => {
   const isParagraph = editor.isActive("paragraph");
   const isOrderedList = editor.isActive("orderedList");
   const isBulletList = editor.isActive("bulletList");
+  const isHorizontalRule = editor.isActive("horizontalRule");
+  const isHardBreak = editor.isActive("hardBreak");
 
   return (
     <>
@@ -43,16 +45,23 @@ const TextEditor = () => {
           </div>
 
           <div className="deitor_nevbar_heading_container">
-            <select>
+            <select
+              onChange={(e) => {
+                const level = parseInt(e.target.value, 10);
+                if (level) {
+                  editor.chain().focus().toggleHeading({ level }).run();
+                }
+              }}
+            >
               <option selected disabled>
                 Heading
               </option>
-              <option value="">H1</option>
-              <option value="">H2</option>
-              <option value="">H3</option>
-              <option value="">H4</option>
-              <option value="">H5</option>
-              <option value="">H6</option>
+              <option value="1">H1</option>
+              <option value="2">H2</option>
+              <option value="3">H3</option>
+              <option value="4">H4</option>
+              <option value="5">H5</option>
+              <option value="6">H6</option>
             </select>
           </div>
 
@@ -80,21 +89,28 @@ const TextEditor = () => {
             </div>
 
             <div className="editor_navbar_underline_container">
-              <button
-                title="Underline"
-              >
+              <button title="Underline">
                 <AiOutlineUnderline />
               </button>
             </div>
 
             <div className="editor_navbar_strike_container">
-              <button title="Line through">
+              <button
+                title="Line through"
+                onClick={() => editor.chain().focus().toggleStrike().run()}
+                disabled={!editor.can().chain().focus().toggleStrike().run()}
+                className={isStrike ? "active_tool" : "disable_tool"}
+              >
                 <GrStrikeThrough />
               </button>
             </div>
 
             <div className="editor_navbar_paragraph_container">
-              <button title="Paragraph">
+              <button
+                title="Paragraph"
+                onClick={() => editor.chain().focus().setParagraph().run()}
+                className={isParagraph ? "active_tool" : "disable_tool"}
+              >
                 <LiaParagraphSolid />
               </button>
             </div>
@@ -102,13 +118,21 @@ const TextEditor = () => {
 
           <div className="editor_navbar_tools_section_two_container">
             <div className="editor_navbar_ul_container">
-              <button title="Bullet list">
+              <button
+                title="Bullet list"
+                onClick={() => editor.chain().focus().toggleBulletList().run()}
+                className={isBulletList ? "active_tool" : "disable_tool"}
+              >
                 <MdFormatListBulleted />
               </button>
             </div>
 
             <div className="editor_navbar_ol_container">
-              <button title="Number list">
+              <button
+                title="Number list"
+                onClick={() => editor.chain().focus().toggleOrderedList().run()}
+                className={isOrderedList ? "active_tool" : "disable_tool"}
+              >
                 <VscListOrdered />
               </button>
             </div>
@@ -116,13 +140,21 @@ const TextEditor = () => {
 
           <div className="editor_navbar_tools_section_three_container">
             <div className="editor_navbar_horizontal_rule_container">
-              <button title="Horizontal rule">
+              <button
+                title="Horizontal rule"
+                onClick={() => editor.chain().focus().setHorizontalRule().run()}
+                className={isHorizontalRule ? "active_tool" : "disable_tool"}
+              >
                 <VscHorizontalRule />
               </button>
             </div>
 
             <div className="deitor_navbar_break_container">
-              <button title="Line break">
+              <button
+                title="Line break"
+                onClick={() => editor.chain().focus().setHardBreak().run()}
+                className={isHardBreak ? "active_tool" : "disable_tool"}
+              >
                 <BsFileBreak />
               </button>
             </div>
