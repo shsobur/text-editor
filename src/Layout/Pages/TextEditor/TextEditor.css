@@ -1,0 +1,118 @@
+.deitor_main_container {
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  background-color: #f3f3f3;
+  /* border: 2px solid red; */
+}
+
+.deitor_navbar_main_container {
+  max-width: 1280px;
+  margin: auto;
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #e7e7e7;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.deitor_navbar_main_container button {
+  background-color: #ffffff;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.deitor_navbar_main_container button:hover {
+  background-color: #fcfcfc;
+}
+.deitor_navbar_main_container button:active {
+  background-color: #f1f1f1;
+}
+
+/* Undo and resu tool__ */
+
+.deitor_nevbar_undo_and_redo_container button {
+  margin: 0 10px;
+}
+
+/* Heading section__ */
+
+.deitor_nevbar_heading_container select {
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+}
+
+/* Tools section one__ */
+
+.editor_navbar_tools_section_one_container {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tools section two__ */
+
+.editor_navbar_tools_section_two_container {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tools section three__ */
+
+.editor_navbar_tools_section_three_container {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Text page__ */
+
+.deitor_text_page_container {
+  max-width: 1024px;
+  height: 80%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.deitor_text_page_container textarea {
+  height: 100%;
+  width: 100%;
+  resize: none;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 50px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.deitor_text_page_container button {
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: 500;
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: #079207;
+}
+
+.deitor_text_page_container button:hover {
+  background-color: #078307;
+}
+.deitor_text_page_container button:active {
+  background-color: #057505;
+}
