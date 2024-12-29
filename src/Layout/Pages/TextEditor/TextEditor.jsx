@@ -1,6 +1,7 @@
 import "./TextEditor.css";
-import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import Underline from "@tiptap/extension-underline";
+import { EditorContent, useEditor } from "@tiptap/react";
 // React icons__
 import { FaBold } from "react-icons/fa";
 import { RiItalic } from "react-icons/ri";
@@ -13,7 +14,7 @@ import { VscHorizontalRule, VscListOrdered } from "react-icons/vsc";
 
 const TextEditor = () => {
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [StarterKit, Underline],
     content: "",
   });
 
@@ -30,16 +31,28 @@ const TextEditor = () => {
   const isBulletList = editor.isActive("bulletList");
   const isHorizontalRule = editor.isActive("horizontalRule");
   const isHardBreak = editor.isActive("hardBreak");
+  const isUnderline = editor.isActive("underline");
 
   return (
     <>
       <div className="deitor_main_container">
         <div className="deitor_navbar_main_container">
           <div className="deitor_nevbar_undo_and_redo_container">
-            <button title="Undo">
+            <button
+              className="undo"
+              title="Undo"
+              onClick={() => editor.chain().focus().undo().run()}
+              disabled={!editor.can().chain().focus().undo().run()}
+            >
               <GrUndo />
             </button>
-            <button title="Redo">
+
+            <button
+              className="redo"
+              title="Redo"
+              onClick={() => editor.chain().focus().redo().run()}
+              disabled={!editor.can().chain().focus().redo().run()}
+            >
               <GrRedo />
             </button>
           </div>
@@ -89,7 +102,12 @@ const TextEditor = () => {
             </div>
 
             <div className="editor_navbar_underline_container">
-              <button title="Underline">
+              <button
+                title="Underline"
+                onClick={() => editor.chain().focus().toggleUnderline().run()}
+                disabled={!editor.can().chain().focus().toggleUnderline().run()}
+                className={isUnderline ? "active_tool" : "disable_tool"}
+              >
                 <AiOutlineUnderline />
               </button>
             </div>
