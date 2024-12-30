@@ -2,6 +2,7 @@ import "./TextEditor.css";
 // Tiptap__
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
+import TextAlign from "@tiptap/extension-text-align";
 import { EditorContent, useEditor } from "@tiptap/react";
 // React icons__
 import { FaBold } from "react-icons/fa";
@@ -9,13 +10,24 @@ import { RiItalic } from "react-icons/ri";
 import { BsFileBreak } from "react-icons/bs";
 import { AiOutlineUnderline } from "react-icons/ai";
 import { LiaParagraphSolid } from "react-icons/lia";
-import { MdFormatAlignCenter, MdFormatAlignLeft, MdFormatAlignRight, MdFormatListBulleted } from "react-icons/md";
 import { GrRedo, GrStrikeThrough, GrUndo } from "react-icons/gr";
 import { VscHorizontalRule, VscListOrdered } from "react-icons/vsc";
+import {
+  MdFormatAlignCenter,
+  MdFormatAlignLeft,
+  MdFormatAlignRight,
+  MdFormatListBulleted,
+} from "react-icons/md";
 
 const TextEditor = () => {
   const editor = useEditor({
-    extensions: [StarterKit, Underline],
+    extensions: [
+      StarterKit,
+      Underline,
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
+    ],
     content: "",
   });
 
@@ -33,6 +45,9 @@ const TextEditor = () => {
   const isBulletList = editor.isActive("bulletList");
   const isOrderedList = editor.isActive("orderedList");
   const isHorizontalRule = editor.isActive("horizontalRule");
+  const isLeftAligned = editor.isActive({ textAlign: "left" });
+  const isRightAligned = editor.isActive({ textAlign: "right" });
+  const isCenterAligned = editor.isActive({ textAlign: "center" });
 
   return (
     <>
@@ -41,7 +56,7 @@ const TextEditor = () => {
           <div className="deitor_nevbar_undo_and_redo_container">
             <button
               className="undo"
-              title="Undo"
+              title="Undo (Ctrl + z)"
               onClick={() => editor.chain().focus().undo().run()}
               disabled={!editor.can().chain().focus().undo().run()}
             >
@@ -50,7 +65,7 @@ const TextEditor = () => {
 
             <button
               className="redo"
-              title="Redo"
+              title="Redo (Ctrl + y)"
               onClick={() => editor.chain().focus().redo().run()}
               disabled={!editor.can().chain().focus().redo().run()}
             >
@@ -82,7 +97,7 @@ const TextEditor = () => {
           <div className="editor_navbar_tools_section_one_container">
             <div className="editor_navbar_bold_container">
               <button
-                title="Bold"
+                title="Bold (Ctrl + b)"
                 onClick={() => editor.chain().focus().toggleBold().run()}
                 disabled={!editor.can().chain().focus().toggleBold().run()}
                 className={isBold ? "active_tool" : "disable_tool"}
@@ -93,7 +108,7 @@ const TextEditor = () => {
 
             <div className="editor_navbar_italic_container">
               <button
-                title="Italic"
+                title="Italic (Ctrl + i)"
                 onClick={() => editor.chain().focus().toggleItalic().run()}
                 disabled={!editor.can().chain().focus().toggleItalic().run()}
                 className={isItalic ? "active_tool" : "disable_tool"}
@@ -104,7 +119,7 @@ const TextEditor = () => {
 
             <div className="editor_navbar_underline_container">
               <button
-                title="Underline"
+                title="Underline (Ctrl + u)"
                 onClick={() => editor.chain().focus().toggleUnderline().run()}
                 disabled={!editor.can().chain().focus().toggleUnderline().run()}
                 className={isUnderline ? "active_tool" : "disable_tool"}
@@ -115,7 +130,7 @@ const TextEditor = () => {
 
             <div className="editor_navbar_strike_container">
               <button
-                title="Line through"
+                title="Strike (Ctrl + shift + s)"
                 onClick={() => editor.chain().focus().toggleStrike().run()}
                 disabled={!editor.can().chain().focus().toggleStrike().run()}
                 className={isStrike ? "active_tool" : "disable_tool"}
@@ -126,7 +141,7 @@ const TextEditor = () => {
 
             <div className="editor_navbar_paragraph_container">
               <button
-                title="Paragraph"
+                title="Paragraph (Ctrl + Alt + 0)"
                 onClick={() => editor.chain().focus().setParagraph().run()}
                 className={isParagraph ? "active_tool" : "disable_tool"}
               >
@@ -138,7 +153,7 @@ const TextEditor = () => {
           <div className="editor_navbar_tools_section_two_container">
             <div className="editor_navbar_ul_container">
               <button
-                title="Bullet list"
+                title="Bullet list (Ctrl + shift + 8)"
                 onClick={() => editor.chain().focus().toggleBulletList().run()}
                 className={isBulletList ? "active_tool" : "disable_tool"}
               >
@@ -148,7 +163,7 @@ const TextEditor = () => {
 
             <div className="editor_navbar_ol_container">
               <button
-                title="Number list"
+                title="Number list (Ctrl + shift + 7)"
                 onClick={() => editor.chain().focus().toggleOrderedList().run()}
                 className={isOrderedList ? "active_tool" : "disable_tool"}
               >
@@ -180,21 +195,41 @@ const TextEditor = () => {
           </div>
 
           <div className="editor_navbar_tools_section_fourth_container">
-
             <div className="editor_navbar_left_tool_container">
-              <button><MdFormatAlignLeft /></button>
+              <button
+                title="Left (Ctrl + shift + l)"
+                onClick={() =>
+                  editor.chain().focus().setTextAlign("left").run()
+                }
+                className={isLeftAligned ? "active_tool" : "disable_tool"}
+              >
+                <MdFormatAlignLeft />
+              </button>
             </div>
 
             <div className="editor_navbar_cente_toolr_container">
-              <button><MdFormatAlignCenter /></button>
+              <button
+                title="Center (Ctrl + shift + e)"
+                onClick={() =>
+                  editor.chain().focus().setTextAlign("center").run()
+                }
+                className={isCenterAligned ? "active_tool" : "disable_tool"}
+              >
+                <MdFormatAlignCenter />
+              </button>
             </div>
-            
             <div className="editor_navbar_right_tool_container">
-              <button><MdFormatAlignRight /></button>
+              <button
+                title="Right (Ctrl + shift + r)"
+                onClick={() =>
+                  editor.chain().focus().setTextAlign("right").run()
+                }
+                className={isRightAligned ? "active_tool" : "disable_tool"}
+              >
+                <MdFormatAlignRight />
+              </button>
             </div>
-
           </div>
-
         </div>
 
         <div className="deitor_text_page_container">
