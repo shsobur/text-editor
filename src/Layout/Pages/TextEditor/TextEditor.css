@@ -79,6 +79,15 @@
   border-radius: 8px;
 }
 
+/* Color section__ */
+
+.editor_navbar_colot_tool_container input {
+  border: none;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+
 /* Tools section one__ */
 
 .editor_navbar_tools_section_one_container {

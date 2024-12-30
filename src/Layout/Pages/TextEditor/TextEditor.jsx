@@ -1,5 +1,6 @@
 import "./TextEditor.css";
 // Tiptap__
+import Color from "@tiptap/extension-color";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
@@ -18,12 +19,15 @@ import {
   MdFormatAlignRight,
   MdFormatListBulleted,
 } from "react-icons/md";
+import TextStyle from "@tiptap/extension-text-style";
 
 const TextEditor = () => {
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      Color,
+      TextStyle,
       Underline,
+      StarterKit,
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),
@@ -92,6 +96,17 @@ const TextEditor = () => {
               <option value="5">H5</option>
               <option value="6">H6</option>
             </select>
+          </div>
+
+          <div className="editor_navbar_colot_tool_container">
+            <input
+              title="color"
+              type="color"
+              value={editor.getAttributes("textStyle").color}
+              onInput={(e) =>
+                editor.chain().focus().setColor(e.target.value).run()
+              }
+            />
           </div>
 
           <div className="editor_navbar_tools_section_one_container">
