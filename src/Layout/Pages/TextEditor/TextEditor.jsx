@@ -1,4 +1,5 @@
 import "./TextEditor.css";
+import { jsPDF } from "jspdf";
 // Tiptap__
 import Color from "@tiptap/extension-color";
 import StarterKit from "@tiptap/starter-kit";
@@ -52,6 +53,20 @@ const TextEditor = () => {
   const isLeftAligned = editor.isActive({ textAlign: "left" });
   const isRightAligned = editor.isActive({ textAlign: "right" });
   const isCenterAligned = editor.isActive({ textAlign: "center" });
+
+  // Export text file__
+  const handleExportPdf = () => {
+    const textContent = editor.getHTML();
+    const pdf = new jsPDF();
+
+    pdf.html(textContent, {
+      callback: (doc) => {
+        doc.save("Untitled")
+      },
+      x: 10,
+      y: 10
+    })
+  }
 
   return (
     <>
@@ -253,7 +268,7 @@ const TextEditor = () => {
             editor={editor}
             className="editor_content"
           ></EditorContent>
-          <button>Save</button>
+          <button onClick={handleExportPdf}>Export</button>
         </div>
       </div>
     </>
