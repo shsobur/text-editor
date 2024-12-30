@@ -5,6 +5,7 @@ import Color from "@tiptap/extension-color";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
+import TextStyle from "@tiptap/extension-text-style";
 import { EditorContent, useEditor } from "@tiptap/react";
 // React icons__
 import { FaBold } from "react-icons/fa";
@@ -20,7 +21,6 @@ import {
   MdFormatAlignRight,
   MdFormatListBulleted,
 } from "react-icons/md";
-import TextStyle from "@tiptap/extension-text-style";
 
 const TextEditor = () => {
   const editor = useEditor({
@@ -61,12 +61,12 @@ const TextEditor = () => {
 
     pdf.html(textContent, {
       callback: (doc) => {
-        doc.save("Untitled")
+        doc.save("Untitled");
       },
       x: 10,
-      y: 10
-    })
-  }
+      y: 10,
+    });
+  };
 
   return (
     <>
