@@ -5,14 +5,6 @@ const MainRoute = () => {
     <>
       <div>
         <Outlet></Outlet>
-
-        <div>
-          
-        </div>
-
-        <div>
-          
-        </div>
       </div>
     </>
   );
