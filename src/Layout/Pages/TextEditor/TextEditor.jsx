@@ -1,4 +1,5 @@
 import "./TextEditor.css";
+// Tiptap__
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
@@ -8,7 +9,7 @@ import { RiItalic } from "react-icons/ri";
 import { BsFileBreak } from "react-icons/bs";
 import { AiOutlineUnderline } from "react-icons/ai";
 import { LiaParagraphSolid } from "react-icons/lia";
-import { MdFormatListBulleted } from "react-icons/md";
+import { MdFormatAlignCenter, MdFormatAlignLeft, MdFormatAlignRight, MdFormatListBulleted } from "react-icons/md";
 import { GrRedo, GrStrikeThrough, GrUndo } from "react-icons/gr";
 import { VscHorizontalRule, VscListOrdered } from "react-icons/vsc";
 
@@ -27,11 +28,11 @@ const TextEditor = () => {
   const isItalic = editor.isActive("italic");
   const isStrike = editor.isActive("strike");
   const isParagraph = editor.isActive("paragraph");
-  const isOrderedList = editor.isActive("orderedList");
-  const isBulletList = editor.isActive("bulletList");
-  const isHorizontalRule = editor.isActive("horizontalRule");
   const isHardBreak = editor.isActive("hardBreak");
   const isUnderline = editor.isActive("underline");
+  const isBulletList = editor.isActive("bulletList");
+  const isOrderedList = editor.isActive("orderedList");
+  const isHorizontalRule = editor.isActive("horizontalRule");
 
   return (
     <>
@@ -177,6 +178,23 @@ const TextEditor = () => {
               </button>
             </div>
           </div>
+
+          <div className="editor_navbar_tools_section_fourth_container">
+
+            <div className="editor_navbar_left_tool_container">
+              <button><MdFormatAlignLeft /></button>
+            </div>
+
+            <div className="editor_navbar_cente_toolr_container">
+              <button><MdFormatAlignCenter /></button>
+            </div>
+            
+            <div className="editor_navbar_right_tool_container">
+              <button><MdFormatAlignRight /></button>
+            </div>
+
+          </div>
+
         </div>
 
         <div className="deitor_text_page_container">
