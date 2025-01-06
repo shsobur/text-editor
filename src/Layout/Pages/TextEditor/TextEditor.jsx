@@ -3,9 +3,12 @@ import { jsPDF } from "jspdf";
 // Tiptap__
 import Color from "@tiptap/extension-color";
 import StarterKit from "@tiptap/starter-kit";
+import ListItem from "@tiptap/extension-list-item";
 import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
 import TextStyle from "@tiptap/extension-text-style";
+import BulletList from "@tiptap/extension-bullet-list";
+import OrderedList from "@tiptap/extension-ordered-list";
 import { EditorContent, useEditor } from "@tiptap/react";
 // React icons__
 import { FaBold } from "react-icons/fa";
@@ -22,13 +25,20 @@ import {
   MdFormatListBulleted,
 } from "react-icons/md";
 
+
 const TextEditor = () => {
   const editor = useEditor({
     extensions: [
       Color,
       TextStyle,
       Underline,
-      StarterKit,
+      StarterKit.configure({
+        bulletList: false,
+        orderedList: false,
+      }),
+      OrderedList,
+      BulletList,
+      ListItem,
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),

@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tiptap/extension-bullet-list": "^2.11.0",
     "@tiptap/extension-color": "^2.10.4",
+    "@tiptap/extension-list-item": "^2.11.0",
+    "@tiptap/extension-ordered-list": "^2.11.0",
     "@tiptap/extension-text-align": "^2.10.4",
     "@tiptap/extension-text-style": "^2.10.4",
     "@tiptap/extension-underline": "^2.10.4",
